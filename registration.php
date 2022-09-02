@@ -3,6 +3,7 @@
 unset($_SESSION['registration_end']);
 $titel = 'Зарегестрироватся';
 require "blocks/header.php";
+    require "vendor/warning-redirect.php";
 
 function msg($ses_name){
     if ($_SESSION[$ses_name]) {
@@ -22,6 +23,9 @@ function msg($ses_name){
     <!--    Изображение профиля    -->
     </label>Изображение профиля </label>
     <input type="file" name="avatar" value="<?=$_FILES['avatar']['tmp_name']?>"
+    <?php
+    msg('error_avatar');
+    ?>
     <!--    Почта   -->
     </label>Почта</label>
     <input type="email" name="email" value="<?= $_SESSION['email'] ?>" placeholder="Введи свою почту">
@@ -33,7 +37,7 @@ function msg($ses_name){
     <input type="password" name="password" placeholder="Введи пароль">
     <!--    Подтвердите пароль    -->
     </label>Подтвердите пароль</label>
-    <input type="password" name="password2" placeholder="Подтвердите пароль">
+    <input type="password" name="password_confirm" placeholder="Подтвердите пароль">
     <?php
     msg('error_password');
     ?>
